@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://script/player.gd" id="1_nxx6t"]
 [ext_resource type="Texture2D" uid="uid://dyvw6pfb7mx4m" path="res://art/character/survivalgame-player-green.png" id="1_p07mu"]
 [ext_resource type="Resource" uid="uid://iwt2aa2530s0" path="res://inventory/player_inventory.tres" id="2_dfjui"]
-[ext_resource type="PackedScene" uid="uid://ctb0txsut1ndi" path="res://inventory/inventory_ui.tscn" id="4_m6hqd"]
+[ext_resource type="PackedScene" uid="uid://ctb0txsut1ndi" path="res://scene/inventory_ui.tscn" id="4_m6hqd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xao7j"]
 atlas = ExtResource("1_p07mu")
@@ -576,3 +576,5 @@ offset_left = -42.0
 offset_top = -94.0
 offset_right = 40.0
 offset_bottom = -31.0
+
+[node name="Marker2D" type="Marker2D" parent="."]

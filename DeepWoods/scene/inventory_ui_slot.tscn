@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://oev5u65rdd6h"]
 
-[ext_resource type="Texture2D" uid="uid://dxx8q0bxp7ens" path="res://art/inventory/inventory-slot.png" id="1_n85t1"]
-[ext_resource type="Script" path="res://inventory/inventory_ui_slot.gd" id="1_rhn28"]
+[ext_resource type="Script" path="res://inventory/inventory_ui_slot.gd" id="1_fahkh"]
+[ext_resource type="Texture2D" uid="uid://dxx8q0bxp7ens" path="res://art/inventory/inventory-slot.png" id="2_07ue0"]
 
 [node name="inventory_ui_slot" type="Panel"]
 self_modulate = Color(0.933333, 1, 1, 0)
 custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
-script = ExtResource("1_rhn28")
+script = ExtResource("1_fahkh")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
@@ -21,6 +21,19 @@ layout_mode = 2
 [node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
 z_index = 6
 
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+z_index = 9
+custom_minimum_size = Vector2(32, 24)
+layout_mode = 0
+offset_left = -8.0
+offset_top = -1.0
+offset_right = 24.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "999"
+horizontal_alignment = 2
+clip_text = true
+
 [node name="slot_item" type="Sprite2D" parent="."]
-texture = ExtResource("1_n85t1")
+texture = ExtResource("2_07ue0")
 centered = false

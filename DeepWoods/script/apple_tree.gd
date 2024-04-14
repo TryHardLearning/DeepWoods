@@ -4,7 +4,11 @@ var stateApple = false
 
 var playerInArea = false
 
-var apple = preload("res://apple_colletable.tscn")
+var apple = preload("res://scene/apple_colletable.tscn")
+
+@export var item: InvItem
+
+var player = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +30,7 @@ func _process(delta):
 func OnPickableAreaBodyEntered(body):
 	if body.has_method("player"):
 		playerInArea = true
+		player = body
 
 
 func OnPickableAreaBodyExited(body):
@@ -42,5 +47,7 @@ func drop_apple():
 	appleInstance.global_position = $Marker2D.global_position
 	get_parent().add_child(appleInstance)
 	
+	##OK
+	player.collect(item)
 	await get_tree().create_timer(3).timeout
 	$growth_timer.start();

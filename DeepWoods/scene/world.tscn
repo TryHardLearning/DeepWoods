@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://08680f4oaqrk"]
+[gd_scene load_steps=13 format=3 uid="uid://08680f4oaqrk"]
 
 [ext_resource type="PackedScene" uid="uid://cw2wcw8cfjppf" path="res://scene/player.tscn" id="1_4ueqr"]
 [ext_resource type="Texture2D" uid="uid://qfckiqgbgtl" path="res://art/environment/survivalgame-terrian-defult.png" id="2_p5res"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4kf0fd7irlo2" path="res://art/environment/survivalgame-trees.png" id="4_g7x0q"]
 [ext_resource type="Texture2D" uid="uid://chinymjo28o4b" path="res://art/environment/survivalgame-terrian-water.png" id="5_ghpr1"]
 [ext_resource type="PackedScene" uid="uid://b2n82oepk2umt" path="res://scene/apple_tree.tscn" id="6_sjbf8"]
+[ext_resource type="PackedScene" uid="uid://yvhn431157r5" path="res://slime.tscn" id="7_u8yij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pfx4o"]
 texture = ExtResource("2_p5res")
@@ -259,6 +260,7 @@ sources/3 = SubResource("TileSetAtlasSource_d5qcm")
 [node name="world" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_4ueqr")]
+position = Vector2(-201, 33)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(95, 99)
@@ -284,3 +286,17 @@ position = Vector2(-433, 287)
 
 [node name="apple_tree4" parent="." instance=ExtResource("6_sjbf8")]
 position = Vector2(-303, 512)
+
+[node name="collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
+polygon = PackedVector2Array(329, -337, 335, 417, 293, 417, 284, 354, -19, 345, -19, 525, 32, 552, 95, 606, 102, 691, 133, 731, 133, 805, 50, 805, 50, 709, 10, 693, 8, 624, -33, 615, -49, 579, -105, 577, -102, 363, -325, 348, -336, 404, -572, 401, -578, -339, 284, -336, -641, -421, -684, 486, -408, 672, 106, 999, 587, 586, 405, -344, 109, -380, 144, -315)
+
+[node name="slime1" parent="." instance=ExtResource("7_u8yij")]
+position = Vector2(65, 685)
+
+[node name="slime2" parent="." instance=ExtResource("7_u8yij")]
+position = Vector2(-413, 223)
+
+[node name="slime3" parent="." instance=ExtResource("7_u8yij")]
+position = Vector2(148, 229)

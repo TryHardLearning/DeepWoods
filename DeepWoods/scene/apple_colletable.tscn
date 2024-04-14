@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://d2bhojxhj0i6a"]
 
-[ext_resource type="Texture2D" uid="uid://dy3var4inhebo" path="res://art/environment/apple-icon.png" id="1_jm023"]
-[ext_resource type="Script" path="res://script/apple_colletable.gd" id="1_sl0s3"]
+[ext_resource type="Script" path="res://script/apple_colletable.gd" id="1_677x8"]
+[ext_resource type="Texture2D" uid="uid://dy3var4inhebo" path="res://art/environment/apple-icon.png" id="2_6oeos"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rg0vw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_jm023")
+"texture": ExtResource("2_6oeos")
 }],
 "loop": true,
 "name": &"apple",
@@ -101,7 +101,7 @@ _data = {
 }
 
 [node name="apple_colletable" type="StaticBody2D"]
-script = ExtResource("1_sl0s3")
+script = ExtResource("1_677x8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 18)

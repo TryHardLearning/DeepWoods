@@ -1,10 +1,46 @@
 extends CharacterBody2D
 
-var speed = 100
+@export var inventory: Inventory
+
+@export var max_hp = 180
+@export var hp = max_hp
+@export var strength = 5
+@export var speed = 80
+@export var magic = 8
+@export var level = 1
+
+var experence = 0
+var experince_total = 0;
+var experince_required = get_requered_experince(level + 1)
+
+func get_requered_experince(level):
+	return round(pow(level, 1.8) + level * 4)
+
+func gain_experience(amount):
+	experince_total += amount
+	experence +=amount
+	while experence >= experince_required:
+		experence -= experince_required
+		level_up()
+
+func level_up():
+	level +=1
+	experince_required = get_requered_experince(level +1)
+	
+	var stats =["max_hp", "strength", "magic"]
+	var random_stat = stats[randi() % stats.size()]
+	set(random_stat, get(random_stat) + randi() % 5 + 2)
+	magic += 5
+	max_hp += 10
+	strength += 5
+
+func expose_stats():
+	$Camera2D/Level.text = "Level: " + str(level)
+	$Camera2D/Magic.text = "Magic: " + str(magic)
+	$Camera2D/Strenght.text = "Strength: " + str(strength)
+	$Camera2D/Life.text = "Life: "+ str(hp)+ " / "+ str(max_hp)
 
 var playerState
-
-@export var inventory: Inventory
 
 var bow_equiped = true
 var bow_cooldown = true
@@ -42,7 +78,9 @@ func _physics_process(delta):
 		bow_cooldown = true
 	
 	play_anim(direction)
-	
+	expose_stats()
+	gain_experience(10)
+
 func play_anim(dir):
 	if playerState == "idle":
 		$AnimatedSprite2D.play("idle");

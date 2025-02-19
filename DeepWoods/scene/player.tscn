@@ -599,6 +599,7 @@ offset_bottom = -97.0
 text = "Level:"
 
 [node name="Inventory_UI" parent="." instance=ExtResource("4_m6hqd")]
+visible = false
 z_index = 4
 offset_left = -42.0
 offset_top = -94.0
@@ -606,3 +607,4 @@ offset_right = 40.0
 offset_bottom = -31.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
+visible = false

@@ -23,6 +23,11 @@ func gain_experience(amount):
 		experence -= experince_required
 		level_up()
 
+func playerTakeDamage(amount):
+	hp -=amount
+	if(hp <= 0):
+		queue_free()
+
 func level_up():
 	level +=1
 	experince_required = get_requered_experince(level +1)
@@ -33,6 +38,7 @@ func level_up():
 	magic += 5
 	max_hp += 10
 	strength += 5
+	hp = max_hp
 
 func expose_stats():
 	$Camera2D/Level.text = "Level: " + str(level)
@@ -79,7 +85,9 @@ func _physics_process(delta):
 	
 	play_anim(direction)
 	expose_stats()
-	gain_experience(10)
+
+func playerDamage():
+	return int((25 + strength) * ((strength / 100.0) + 1))
 
 func play_anim(dir):
 	if playerState == "idle":

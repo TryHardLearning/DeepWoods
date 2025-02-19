@@ -10,6 +10,8 @@ var playerInArea = false
 
 var player
 
+var player_damage = 25
+
 @onready var slime = $slime_collctable
 @export var itemRes: InvItem 
 
@@ -31,12 +33,17 @@ func OnDetectionAreaBodyEntered(body):
 	if body.has_method("player"):
 		playerInArea = true
 		player = body
+		player_damage = player.playerDamage()
+		player.playerTakeDamage(30)
 
 
 func OnDetectionAreaBodyExited(body):
-	if body.has_method("player"):
+	if body.has_method("playerTakeDamage"):
 		playerInArea = false
 		player = body
+		player.playerTakeDamage(10)
+		if(health <= 0):
+			player.gain_experience(50)
 
 
 func OnHitboxAreaEntered(area):
@@ -44,7 +51,7 @@ func OnHitboxAreaEntered(area):
 	
 	if area.has_method("arrow_deal_damage"):
 		damage = 25
-		take_damage(damage)
+		take_damage(player_damage)
 		
 func take_damage(damage):
 	health -= damage
